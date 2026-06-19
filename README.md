@@ -10,8 +10,8 @@ El sistema está desarrollado íntegramente en **Python 3** y no requiere la ins
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/tu-usuario/gestion-turnos-psicologo.git](https://github.com/tu-usuario/gestion-turnos-psicologo.git)
-   cd gestion-turnos-psicologo
+   git clone https://github.com/fdmuinos/UTN-TUPaD-OE-TPI.git
+   cd UTN-TUPaD-OE-TPI
 2. **Verificar la estructura del proyecto:**
 Asegurarse de que el archivo de base de datos turnos.csv se encuentre en la raíz del proyecto.
 
