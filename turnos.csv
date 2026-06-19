@@ -1,0 +1,6 @@
+fecha,hora,disponible,id,paciente
+25/06/2026,14:00,False,101,"sofia brest, 47540478"
+25/06/2026,15:30,False,102,"Fernando Muiños, 37247436"
+25/06/2026,17:00,False,103,DNI 11223344
+26/06/2026,09:00,True,201,
+26/06/2026,10:30,True,202,
