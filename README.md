@@ -2,7 +2,7 @@
 
 Este proyecto ha sido desarrollado para la cátedra **Organización Empresarial** de la Tecnicatura Universitaria en Programación (TUP) - UTN. Consiste en un chatbot conversacional interactivo diseñado bajo una Máquina de Estados Finitos que automatiza el proceso administrativo de asignación de turnos, integrando persistencia de datos y control de robustez ante errores de entrada.
 
-## 🚀 Requisitos y Configuración del Entorno
+## Requisitos y Configuración del Entorno
 
 El sistema está desarrollado íntegramente en **Python 3** y no requiere la instalación de librerías externas complejas, utilizando el módulo nativo `csv` para garantizar un despliegue ágil y portable.
 
