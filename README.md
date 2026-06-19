@@ -18,7 +18,7 @@ Asegurarse de que el archivo de base de datos turnos.csv se encuentre en la raí
 3. **Ejecutar el simulador del Chatbot:**
 Inicie el bucle interactivo ejecutando el archivo principal desde la terminal:
    ```bash
-   python src/main.py
+   python main.py
 
 ## Arquitectura implementada
 - main.py: Interfaz de entrada por consola que simula el entorno de mensajería.
