@@ -85,10 +85,16 @@ def procesar_mensaje(chat_id, mensaje_usuario):
 
     # espera que el usuario ingrese sus datos
     elif estado == "ESPERANDO_DATOS":
-
-        # verifica que los datos tengan el formato correcto
+        # CAMINO INFELIZ: validación del formato "Nombre Apellido, DNI"
         if "," not in mensaje:
-            return "Formato incorrecto. Ejemplo: Juan Perez, 20123456"
+            return "Formato incorrecto. Por favor, use la coma para separar: Nombre Apellido, DNI"
+        
+        partes = mensaje.split(",")
+        nombre = partes[0].strip()
+        dni = partes[1].strip()
+        
+        if not nombre or not dni.isdigit() or len(dni) < 7:
+            return "Datos inválidos. Asegúrese de ingresar su Nombre y un número de DNI válido (ej: Juan Pérez, 35123456)."
 
         # recupera la fecha y hora elegidas
         fecha = _sesiones_temporales[chat_id]["fecha"]
