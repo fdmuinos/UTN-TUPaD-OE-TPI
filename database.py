@@ -26,7 +26,7 @@ def cargar_turnos():
 
             # guarda la informacion del turno
             turnos[fecha][hora] = {
-                "disponible": fila["disponible"].strip() == "True",
+                "disponible": fila["disponible"].strip().upper() == "TRUE",
                 "id": int(fila["id"]),
                 "paciente": fila["paciente"].strip() if fila["paciente"] else None
             }
