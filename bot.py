@@ -95,42 +95,28 @@ def procesar_mensaje(chat_id, mensaje_usuario):
         hora = _sesiones_temporales[chat_id]["hora"]
 
         # intenta reservar el turno en la base de datos
-        exito = database.verificar_y_reservar(
-            fecha,
-            hora,
-            mensaje
-        )
+        exito = database.verificar_y_reservar(fecha, hora, mensaje)
 
         if exito:
-
-            # cambia el estado a turno confirmado
-            _estados_usuarios[chat_id] = "TURNO_CONFIRMADO"
+            # CONSISTENCIA BPMN: resetea el estado para simular el fin del proceso
+            _estados_usuarios[chat_id] = "ESTADO_INICIAL"
 
             return (
                 "¡Turno confirmado!\n"
                 f"Fecha: {fecha}\n"
                 f"Hora: {hora}\n"
-                f"Paciente: {mensaje}"
+                f"Paciente: {mensaje}\n\n"
+                "Proceso finalizado con éxito. Si desea una nueva cita, envíe un mensaje."
             )
-
         else:
-
-            # si el turno fue tomado por otro usuario vuelve a pedir fecha
-            _estados_usuarios[chat_id] = "ESPERANDO_FECHA"
+            # CONSISTENCIA BPMN: el desvío del 'no' en el diagrama vuelve a los horarios de la misma fecha
+            _estados_usuarios[chat_id] = "ESPERANDO_HORA"
+            horarios = database.obtener_horarios_libres(fecha)
+            opciones = "\n".join(horarios)
 
             return (
-                "El turno fue tomado por otro usuario.\n"
-                "Seleccione una nueva fecha."
+                "Disculpe, el horario seleccionado acaba de ser reservado por otro usuario.\n"
+                f"Horarios que aún quedan disponibles para el {fecha}:\n{opciones}\n"
+                "Por favor, escriba otra de las opciones."
             )
-
-    # estado final del proceso
-    elif estado == "TURNO_CONFIRMADO":
-
-        # reinicia el chatbot para una nueva reserva
-        _estados_usuarios[chat_id] = "ESTADO_INICIAL"
-
-        return (
-            "Proceso finalizado.\n"
-            "Envíe cualquier mensaje para sacar otro turno."
-        )
 
